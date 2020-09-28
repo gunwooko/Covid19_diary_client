@@ -99,7 +99,7 @@ const ContentView = () => {
 
   //댓글기능
   const postComment = e => {
-    e.preventDefault();
+    // e.preventDefault();
     setCommneted([comment, ...content.comment]);
     axios
       .post(
@@ -115,6 +115,12 @@ const ContentView = () => {
         history.go("/");
       });
   };
+
+  const onKeyPress = (e) => {
+    if(e.key ==='Enter'){
+      postComment();
+    }
+  }
 
   //댓글 삭제
   const deleteComment = value => {
@@ -235,6 +241,7 @@ const ContentView = () => {
                   placeholder="댓글을 작성하세요"
                   value={comment}
                   onChange={e => newComment(e.target.value)}
+                  onKeyPress={onKeyPress}
                 />
                 <button onClick={postComment}>댓글 작성</button>
                 <>
