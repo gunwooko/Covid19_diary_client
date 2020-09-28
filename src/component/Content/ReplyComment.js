@@ -37,6 +37,13 @@ const ReplyComment = ({ data, deleteComment, contentId, allComment }) => {
     setAddReply(!addReply);
   };
 
+  const onKeyPress = (e) => {
+    if(e.key ==='Enter'){
+      addReplyComment();
+    }
+  }
+
+
   return (
     <ReplyCommment>
       <div className="btn">
@@ -62,6 +69,7 @@ const ReplyComment = ({ data, deleteComment, contentId, allComment }) => {
           placeholder="답글을 작성하세요"
           onChange={handleReply}
           value={replyComment}
+          onKeyPress={onKeyPress}
         ></input>
         <button onClick={() => addReplyComment(data.id)}>답글 작성</button>
 
